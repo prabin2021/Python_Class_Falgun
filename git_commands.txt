@@ -1,0 +1,7 @@
+git init
+git add .
+
+git commit -m"push message"
+git branch -m main
+git remote add origin https://github.com/prabin2021/Python_Class_Falgun.git
+git push origin main
