@@ -126,3 +126,11 @@ Rules for defining the function name:
 #     print(f"Hi, I am {details['name']}. I am {details['age']} years old. I am from {details['country']}.")
     
 # show_details(country = "India",name = "Ram",age = 27) 
+
+
+
+def check_even_odd(num):
+    if num % 2 == 0:
+        return f"{num} is an even number"
+    else:
+        return f"{num} is an odd number"

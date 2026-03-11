@@ -49,3 +49,8 @@ LEGB:
 # show()
 
 # print(name)
+
+from function import check_even_odd
+
+result = check_even_odd(11)
+print(result)
