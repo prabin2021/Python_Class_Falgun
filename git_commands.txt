@@ -12,6 +12,8 @@ git commit -m"YOur message"
 git branch -m main
 git push origin main
 
+for cloning the project:
 
+git clone project_link
 
  
