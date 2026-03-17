@@ -8,38 +8,38 @@ class PlayList:
         
     
     def load_movies(self):  #  imports all the movie names from "movies_list.txt" file to this program
-        
-        with open(self.file_path,"r") as f:
-            for each_name in f:
-                self.movies_list.append(each_name)
+        try:
+            with open(self.file_path,"r") as f:
+                for each_name in f:
+                    self.movies_list.append(each_name.strip())
+                    
+        except FileNotFoundError:
+            print("File not found")
                 
     
-    def write_movies(self,movie):   # write the movies names into the "movies_list.txt" file
-        
-        self.movies_list.append(movie)
-        
+    def save_movies(self):      # updates the movie_list contents to movies_list.txt file.
         with open(self.file_path,"w") as f:
             for each_name in self.movies_list:
-                f.write(each_name)
-                
+                f.write(each_name + "\n")
+    
+    def write_movies(self,movie):   # write the movies names into the "movies_list.txt" file
+        self.movies_list.append(movie)
+        self.save_movies()        
         print(f"{movie} is stored successfully.")
     
     
     def remove_movies(self,movie):    # delete the movie names given by user from "movies_list.txt" file
-        
         self.movies_list.remove(movie)
-        
-        with open(self.file_path,"w") as f:
-            for each_name in self.movies_list:
-                f.write(each_name)
-                
+        self.save_movies()
         print(f"{movie} is removed successfully.")
     
     
     def show_movies(self):     # show the list of movie names that are collected by user from "movies_list.txt" file
         print("Your movies list: ")
+        count = 1
         for each_name in self.movies_list:
-            print(each_name)
+            print(count,".", each_name)
+            count = count + 1
     
 
 playlist_name = input("Enter playlist name: ")
@@ -48,12 +48,7 @@ p1 = PlayList(playlist_name)
 
 while True:
     
-    print("Your available options:")
-    print("1. Add Movie")
-    print("2. Remove Movie")
-    print("3. Show Movie Names")
-    print("4. Exit")
-    
+    print("Your available options:\n1. Add Movie\n2. Remove Movie\n3. Show Movie Names\n4. Exit")
     choice = int(input("Enter your choice: "))
     
     if choice == 1:
